@@ -1,0 +1,17 @@
+.checkout-container { max-width: 1000px; margin: 40px auto; padding: 20px; }
+.checkout-grid { display: grid; grid-template-columns: 1fr 350px; gap: 30px; }
+.checkout-form { display: flex; flex-direction: column; gap: 15px; }
+.checkout-form input, .checkout-form textarea {
+  padding: 12px; border: 1px solid #ddd; border-radius: 5px;
+}
+.order-summary { background: #f9f9f9; padding: 20px; border-radius: 8px; }
+.summary-item { display: flex; justify-content: space-between; margin-bottom: 10px; }
+.place-order-btn {
+  background: #000; color: #fff; padding: 15px; border: none; cursor: pointer; font-weight: bold;
+}
+.place-order-btn:hover { background: #333; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .checkout-grid { grid-template-columns: 1fr; }
+}

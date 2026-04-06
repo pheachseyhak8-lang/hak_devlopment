@@ -1,0 +1,140 @@
+/* ===== SHOP PAGE ===== */
+.shop-page {
+  display: flex;
+  max-width: 1200px;
+  margin: 40px auto;
+  gap: 30px;
+  padding: 0 20px;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 190px;
+  padding: 20px;
+  border-right: 1px solid #eee;
+}
+
+.filter-group {
+  margin-bottom: 25px;
+}
+
+.filter-group h4 {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* ===== CONTENT ===== */
+.shop-content {
+  flex: 1;
+}
+
+.shop-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sort-select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* ===== PRODUCT GRID (SMART RESPONSIVE) ===== */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* ===== PRODUCT CARD ===== */
+.product-card {
+  border: 1px solid #eee;
+  padding: 0;
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+  transition: 0.3s;
+  
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+/* IMAGE */
+.product-card img {
+  width: 60%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  object-position: top;
+
+}
+
+/* TEXT */
+.product-card h4 {
+  font-size: 16px;
+  margin: 10px 0 5px;
+  color: #333;
+}
+
+.product-card p {
+  font-weight: bold;
+  color: #ff4d4d;
+}
+
+/* ===== TABLET (<= 992px) ===== */
+@media (max-width: 992px) {
+  .shop-page {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .product-card img {
+    height: 280px;
+  }
+}
+
+/* ===== MOBILE (<= 768px) ===== */
+@media (max-width: 768px) {
+  .shop-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .product-card img {
+    height: 250px;
+  }
+}
+
+/* ===== SMALL MOBILE (<= 480px) ===== */
+@media (max-width: 480px) {
+  .product-card img {
+    height: 200px;
+  }
+
+  .product-card h4 {
+    font-size: 14px;
+  }
+
+  .product-card p {
+    font-size: 14px;
+  }
+}
