@@ -44,7 +44,7 @@ const Contact = () => {
         <p>ប្រសិនបើអ្នកមានចម្ងល់ ឬចង់សួរព័ត៌មានបន្ថែម សូមទាក់ទងមកយើងតាមរយៈ៖</p>
         <div className="info-item">📍 ទីតាំង: ភ្នំពេញ, ប្រទេសកម្ពុជា</div>
         <div className="info-item">📞 ទូរសព្ទ: 071 456 8013</div>
-        <div className="info-item">📧 Email: support@geministore.com</div>
+        <div className="info-item">📧 Email: seyhak@gmailstore.com</div>
         
         <div className="map-placeholder">
           {/* អ្នកអាចដាក់ Google Map Embed នៅទីនេះ */}

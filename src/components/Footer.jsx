@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-section">
-          <h3>Clothify</h3>
+          <h3>Shop</h3>
           <p>នាំមកជូននូវម៉ូដសម្លៀកបំពាក់ទាន់សម័យ និងគុណភាពខ្ពស់។</p>
         </div>
         <div className="footer-section">
@@ -23,7 +23,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; 2024 Clothify Store. All rights reserved.</p>
+        <p>&copy; 2026 Clothify Store. All rights reserved.</p>
       </div>
     </footer>
   );

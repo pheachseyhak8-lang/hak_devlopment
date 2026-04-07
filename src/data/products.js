@@ -5,6 +5,9 @@ import qr from "../assets/qr.jpg";
 import y from "../assets/y.webp";
 import ye from "../assets/ye.webp";
 import yk from "../assets/yk.webp";
+import o from "../assets/o.webp";
+import koo from "../assets/koo.webp";
+import one from "../assets/one.webp";
 
 export const allProducts = [
   { id: 1, name: "Classic Man T-Shirt", price: 15, category: "Men", image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1000", description: "High-quality cotton t-shirt for men, comfortable and durable." },
@@ -16,4 +19,7 @@ export const allProducts = [
   { id: 7, name: "Pink Party Dress", price: 50, category: "Women", image: pic11, description: "Beautiful pink dress for special celebrations." },
   { id: 8, name: "Modern Graphic Tee", price: 18, category: "Women", image: qr, description: "Creative graphic design tee for a unique look." },
   { id: 9, name: "girl party dress", price: 50, category: "Women", image: yk, description: "Creative graphic design tee for a unique look." },
+  { id: 10, name: "girl party dress", price: 50, category: "Women", image: o, description: "Creative graphic design tee for a unique look." },
+  { id: 11, name: "Modern Graphic black", price: 18, category: "Women", image: koo, description: "Creative graphic design tee for a unique look." },
+  { id: 12, name: "black Graphic Tee", price: 30, category: "Women", image: one, description: "black design tee for a unique look." }
 ];

@@ -13,6 +13,7 @@ import Checkout from "./pages/Checkout.jsx";
 import Login  from "./pages/Login.jsx";
 import Register  from "./pages/Register.jsx";
 import Contact from "./pages/Contact.jsx";
+import About from "./pages/About.jsx";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
       </Routes>
       <Footer />
     </CartProvider>
