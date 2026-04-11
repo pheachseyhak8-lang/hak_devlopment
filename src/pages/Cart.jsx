@@ -9,10 +9,10 @@ const Cart = () => {
 
   const subtotal = cartItems.reduce((acc, item) => acc + (item.price * item.qty), 0);
 
-  // Function សម្រាប់បើក App ធនាគារតាម Link
   const openBankApp = () => {
-    // ប្តូរ Link ខាងក្រោមនេះជាមួយ Link ថ្មីដែលអ្នក Copy ចេញពី App ABA របស់អ្នក
-    const abaLink = "https://pay.ababank.com/oRF8/6wo7sue3"; 
+    // 💡 ដំណោះស្រាយ៖ ប្រើ Link ដែលអ្នក Copy ចេញពី ABA ដោយមិនបានដាក់តម្លៃលុយ (Amount = 0)
+    // ពេល User ចុចទៅ វានឹងលោតចូល App ABA ហើយទុកប្រអប់លេខលុយឱ្យ User វាយខ្លួនឯង
+    const abaLink = "https://pay.ababank.com/oRF8/ksgjomke";; 
     window.location.href = abaLink;
   };
 
@@ -24,7 +24,7 @@ const Cart = () => {
     cartItems.forEach((item, index) => {
       message += `${index + 1}. ${item.name} x ${item.qty} = $${(item.price * item.qty).toFixed(2)}\n`;
     });
-    message += `\n💰 **សរុបរួម: $${subtotal.toFixed(2)}**`;
+    message += `\n💰 **សរុបរួមដែលត្រូវបង់: $${subtotal.toFixed(2)}**`;
     
     const user = JSON.parse(localStorage.getItem("user"));
     message += `\n👤 **អ្នកទិញ:** ${user ? user.email : "ភ្ញៀវមិនស្គាល់ឈ្មោះ"}`;
@@ -87,9 +87,10 @@ const Cart = () => {
       {showQR && (
         <div className="payment-modal">
           <div className="modal-content" style={{ padding: '30px', textAlign: 'center' }}>
-            <h2 style={{ marginBottom: '20px' }}>ការបង់ប្រាក់</h2>
+            <h2 style={{ marginBottom: '10px' }}>បង់ប្រាក់រហ័ស</h2>
             
-            <p style={{ marginBottom: '20px', color: '#555' }}>សូមចុចប៊ូតុងខាងក្រោមដើម្បីបើកកម្មវិធីធនាគារ និងធ្វើការផ្ទេរប្រាក់ចំនួន <b>${subtotal.toFixed(2)}</b></p>
+            <p style={{ marginBottom: '5px', fontSize: '18px' }}>ទឹកប្រាក់សរុប: <b style={{ color: '#d32f2f' }}>${subtotal.toFixed(2)}</b></p>
+            <p style={{ marginBottom: '20px', fontSize: '14px', color: '#666' }}>(សូមវាយបញ្ចូលចំនួនទឹកប្រាក់នេះ ពេលលោតចូល App ធនាគារ)</p>
             
             <button 
               onClick={openBankApp} 
@@ -111,18 +112,10 @@ const Cart = () => {
             </button>
             
             <div className="modal-actions" style={{ display: 'flex', gap: '10px' }}>
-              <button 
-                onClick={sendOrderToTelegram} 
-                className="confirm-btn" 
-                style={{ flex: 1, padding: '12px', background: '#28a745', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
-              >
+              <button onClick={sendOrderToTelegram} className="confirm-btn" style={{ flex: 1, padding: '12px', background: '#28a745', color: 'white', border: 'none', borderRadius: '5px' }}>
                 Confirm Order
               </button>
-              <button 
-                onClick={() => setShowQR(false)} 
-                className="cancel-btn" 
-                style={{ flex: 1, padding: '12px', background: '#dc3545', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
-              >
+              <button onClick={() => setShowQR(false)} className="cancel-btn" style={{ flex: 1, padding: '12px', background: '#dc3545', color: 'white', border: 'none', borderRadius: '5px' }}>
                 Cancel
               </button>
             </div>
