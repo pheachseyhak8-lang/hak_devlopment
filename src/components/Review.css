@@ -1,0 +1,92 @@
+/* កុងតឺន័ររួមនៃ Review */
+.review-section {
+  margin-top: 50px;
+  padding: 30px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.review-section h3 {
+  font-size: 24px;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+/* រចនាប័ទ្ម Form សម្រាប់បញ្ចេញមតិ */
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 40px;
+  background: #fdfdfd;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+}
+
+.review-form input, 
+.review-form textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.review-form input:focus, 
+.review-form textarea:focus {
+  border-color: #000;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.review-form button {
+  padding: 12px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.review-form button:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+/* បញ្ជីនៃមតិយោបល់ */
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.review-item {
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  border-left: 4px solid #ffcc00; /* ពណ៌មាសសម្រាប់ Rating */
+}
+
+.review-item strong {
+  font-size: 17px;
+  color: #333;
+}
+
+.review-item span {
+  display: block;
+  margin: 5px 0;
+  color: #ff9900;
+  font-size: 14px;
+}
+
+.review-item p {
+  color: #666;
+  margin-top: 8px;
+  font-style: italic;
+}
