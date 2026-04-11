@@ -5,26 +5,27 @@ import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { cartItems, removeFromCart, updateQty, clearCart } = useCart();
-  const [showQR, setShowQR] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const subtotal = cartItems.reduce((acc, item) => acc + (item.price * item.qty), 0);
 
+  // ១. មុខងារបើក App ABA
   const openBankApp = () => {
-    // 💡 ដំណោះស្រាយ៖ ប្រើ Link ដែលអ្នក Copy ចេញពី ABA ដោយមិនបានដាក់តម្លៃលុយ (Amount = 0)
-    // ពេល User ចុចទៅ វានឹងលោតចូល App ABA ហើយទុកប្រអប់លេខលុយឱ្យ User វាយខ្លួនឯង
-    const abaLink = "https://pay.ababank.com/oRF8/ksgjomke";; 
+    const abaLink = "https://pay.ababank.com/oRF8/ksgjomke";
     window.location.href = abaLink;
+    setIsProcessing(true); // បង្ហាញប៊ូតុង Confirm បន្ទាប់ពីលោតទៅ ABA
   };
 
-  const sendOrderToTelegram = async () => {
+  // ២. មុខងារបញ្ជាក់ថាបង់រួច ទើបផ្ញើទៅ Telegram និង Clear Cart
+  const handleFinalConfirm = async () => {
     const botToken = "8214235068:AAHGIMjr6EkaBO2p_NaeCe9ztPos-laICRI"; 
     const chatId = "5467535945"; 
 
-    let message = "🛍️ **មានការកុម្ម៉ង់ថ្មី!**\n\n";
+    let message = "✅ **ការទូទាត់ត្រូវបានបញ្ជាក់ដោយអតិថិជន!**\n\n";
     cartItems.forEach((item, index) => {
       message += `${index + 1}. ${item.name} x ${item.qty} = $${(item.price * item.qty).toFixed(2)}\n`;
     });
-    message += `\n💰 **សរុបរួមដែលត្រូវបង់: $${subtotal.toFixed(2)}**`;
+    message += `\n💰 **សរុប: $${subtotal.toFixed(2)}**`;
     
     const user = JSON.parse(localStorage.getItem("user"));
     message += `\n👤 **អ្នកទិញ:** ${user ? user.email : "ភ្ញៀវមិនស្គាល់ឈ្មោះ"}`;
@@ -37,12 +38,12 @@ const Cart = () => {
       });
 
       if (response.ok) {
-        alert("ការកុម្ម៉ង់ត្រូវបានផ្ញើជោគជ័យ!");
-        setShowQR(false);
+        alert("អរគុណសម្រាប់ការបញ្ជាទិញ! យើងនឹងពិនិត្យវិក្កយបត្ររបស់អ្នក។");
         clearCart(); 
+        setIsProcessing(false);
       }
     } catch (error) {
-      alert("Error sending message!");
+      alert("Error sending confirmation!");
     }
   };
 
@@ -80,48 +81,26 @@ const Cart = () => {
         <div className="cart-summary">
           <h3>Order Summary</h3>
           <div className="summary-row"><span>Total</span><span>${subtotal.toFixed(2)}</span></div>
-          <button onClick={() => setShowQR(true)} className="checkout-btn" style={{ width: '100%', marginTop: '20px' }}>PROCEED TO CHECKOUT</button>
-        </div>
-      </div>
-
-      {showQR && (
-        <div className="payment-modal">
-          <div className="modal-content" style={{ padding: '30px', textAlign: 'center' }}>
-            <h2 style={{ marginBottom: '10px' }}>បង់ប្រាក់រហ័ស</h2>
-            
-            <p style={{ marginBottom: '5px', fontSize: '18px' }}>ទឹកប្រាក់សរុប: <b style={{ color: '#d32f2f' }}>${subtotal.toFixed(2)}</b></p>
-            <p style={{ marginBottom: '20px', fontSize: '14px', color: '#666' }}>(សូមវាយបញ្ចូលចំនួនទឹកប្រាក់នេះ ពេលលោតចូល App ធនាគារ)</p>
-            
-            <button 
-              onClick={openBankApp} 
-              className="bank-app-btn" 
-              style={{
-                background: '#005aab',
-                color: 'white',
-                padding: '15px 25px',
-                borderRadius: '10px',
-                border: 'none',
-                fontSize: '18px',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-                width: '100%',
-                marginBottom: '20px'
-              }}
-            >
-              🚀 បើកកម្មវិធី ABA ដើម្បីបង់ប្រាក់
+          
+          {!isProcessing ? (
+            // ជំហានទី ១: ចុចដើម្បីទៅ ABA
+            <button onClick={openBankApp} className="checkout-btn" style={{ width: '100%', marginTop: '20px', background: '#005aab' }}>
+              Payment with ABA Bank
             </button>
-            
-            <div className="modal-actions" style={{ display: 'flex', gap: '10px' }}>
-              <button onClick={sendOrderToTelegram} className="confirm-btn" style={{ flex: 1, padding: '12px', background: '#28a745', color: 'white', border: 'none', borderRadius: '5px' }}>
-                Confirm Order
+          ) : (
+            // ជំហានទី ២: បន្ទាប់ពីត្រលប់ពី ABA វិញ ឱ្យគេចុចបញ្ជាក់
+            <div style={{ marginTop: '20px', padding: '15px', border: '1px dashed #005aab', borderRadius: '10px', textAlign: 'center' }}>
+              <p style={{ fontSize: '14px', marginBottom: '10px' }}>តើអ្នកបានបង់ប្រាក់រួចរាល់ហើយមែនទេ?</p>
+              <button onClick={handleFinalConfirm} className="checkout-btn" style={{ width: '100%', background: '#28a745' }}>
+                YES, I HAVE PAID
               </button>
-              <button onClick={() => setShowQR(false)} className="cancel-btn" style={{ flex: 1, padding: '12px', background: '#dc3545', color: 'white', border: 'none', borderRadius: '5px' }}>
+              <button onClick={() => setIsProcessing(false)} style={{ marginTop: '10px', background: 'none', border: 'none', color: '#888', cursor: 'pointer' }}>
                 Cancel
               </button>
             </div>
-          </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 };
