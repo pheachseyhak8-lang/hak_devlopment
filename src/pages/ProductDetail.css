@@ -1,137 +1,10 @@
+/* --- CONTAINER --- */
 .product-detail-container {
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
-  animation: fadeIn 0.5s ease;
-  background-color: #87bab3;
-  border-radius: 0.3rem;
-}
-
-.back-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin-bottom: 20px;
-  font-weight: 600;
-  color: #666;
-}
-
-.detail-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: start;
-}
-
-/* ដំណោះស្រាយរូបភាពធំពេក */
-.product-image-section {
-  width: 80%;
-  max-height: 550px; /* កំណត់កម្ពស់អតិបរមា */
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
-
-.product-image-section img {
-  width: 100%;
-  height: 650px; /* បង្ខំកម្ពស់ឱ្យនៅថេរ */
-  object-fit: cover; /* ការពាររូបភាពកុំឱ្យរីកខ្លាំងពេក */
-  display: block;
-}
-
-.product-info-section {
-  padding: 10px 0;
-}
-
-.detail-category {
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #888;
-  font-size: 13px;
-  margin-bottom: 10px;
-}
-
-.detail-title {
-  font-size: 42px;
-  font-weight: 800;
-  margin-bottom: 15px;
-}
-
-.detail-price {
-  font-size: 28px;
-  font-weight: 700;
-  color: #ff4d4d;
-  margin-bottom: 25px;
-}
-
-.detail-description {
-  font-size: 16px;
-  line-height: 1.8;
-  color: #555;
-  margin-bottom: 35px;
-}
-
-.size-options {
-  display: flex;
-  gap: 15px;
-  margin: 15px 0 35px 0;
-}
-
-.size-btn {
-  width: 55px;
-  height: 50px;
-  border: 1px solid #ddd;
-  background: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
-  border-radius: 5px;
-}
-
-.size-btn.active {
-  background: #000;
-  color: white;
-  border-color: #000;
-}
-
-.add-to-cart-btn {
-  width: 100%;
-  padding: 18px;
-  background: #000;
-  color: white;
-  border: none;
-  font-weight: 700;
-  font-size: 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.add-to-cart-btn:hover {
-  background: #333;
-  transform: translateY(-3px);
-}
-
-.product-perks {
-  margin-top: 40px;
-  border-top: 1px solid #eee;
-  padding-top: 20px;
-  font-size: 14px;
-  color: #777;
-  display: grid;
-  gap: 10px;
-}
-.review-wrapper {
-  max-width: 1000px; /* ឱ្យវាមានទំហំល្មមមើល */
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 50px;
-}
-
-@media (max-width: 768px) {
-  .review-wrapper {
-    padding: 0 20px;
-  }
+  animation: fadeIn 0.5s ease-in;
+  
 }
 
 @keyframes fadeIn {
@@ -139,13 +12,204 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Mobile Responsive */
-@media (max-width: 900px) {
+/* --- BACK BUTTON --- */
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #666;
+  margin-bottom: 30px;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.back-btn:hover {
+  color: #000;
+  transform: translateX(-5px);
+}
+
+/* --- GRID LAYOUT --- */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* --- IMAGE SECTION --- */
+.product-image-section {
+  background: #fcfcfc;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+}
+
+/* --- IMAGE SECTION --- */
+.product-image-section {
+  background: #fcfcfc;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+  display: flex; /* ឱ្យរូបភាពនៅចំកណ្តាល */
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* បន្ថែម padding បន្តិចជុំវិញរូបភាព */
+}
+
+.product-image-section img {
+  width: auto; /* ឱ្យទទឹងលោតតាមកម្ពស់ */
+  max-width: 100%; /* ការពារកុំឱ្យធំជាង Container */
+  
+  /* 💡 ដំណោះស្រាយសំខាន់៖ កំណត់កម្ពស់អតិបរមា */
+  height: auto;
+  max-height: 500px; /* អ្នកអាចដូរប្តូរលេខនេះបាន (ឧទាហរណ៍៖ ៤៥០px ឬ ៥៥០px) */
+  
+  display: block;
+  object-fit: contain; /* ការពាររូបភាពកុំឱ្យលេចចេញក្រៅ */
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: 0.5rem;
+}
+
+.product-image-section:hover img {
+  transform: scale(1.05); /* ហហ្ស៊ូមបន្តិចពេល Hover */
+}
+
+/* --- RESPONSIVE (MOBILE) --- */
+@media (max-width: 992px) {
+  .product-image-section img {
+    max-height: 400px; /* បន្ថយទំហំរូបភាពលើ Mobile ឱ្យតូចជាងមុន */
+  }
+}
+
+.product-image-section:hover img {
+  transform: scale(1.05);
+}
+
+/* --- INFO SECTION --- */
+.product-info-section {
+  padding-top: 20px;
+}
+
+.detail-category {
+  text-transform: uppercase;
+  color: #999;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.detail-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.detail-price {
+  font-size: 28px;
+  font-weight: 600;
+  color: #d32f2f;
+  margin-bottom: 25px;
+}
+
+.detail-description {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
+
+/* --- SIZE SELECTOR --- */
+.size-selector {
+  margin-bottom: 35px;
+}
+
+.size-selector h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.size-options {
+  display: flex;
+  gap: 12px;
+}
+
+.size-btn {
+  width: 55px;
+  height: 55px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.size-btn:hover {
+  border-color: #000;
+}
+
+.size-btn.active {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* --- ADD TO CART BUTTON --- */
+.add-to-cart-btn {
+  width: 100%;
+  padding: 18px;
+  background: #000;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  letter-spacing: 1px;
+}
+
+.add-to-cart-btn:hover {
+  background: #333;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.add-to-cart-btn:active {
+  transform: translateY(-1px);
+}
+
+/* --- REVIEW SECTION WRAPPER --- */
+.review-wrapper {
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+/* --- RESPONSIVE (MOBILE) --- */
+@media (max-width: 992px) {
   .detail-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 40px;
   }
-  .product-image-section, .product-image-section img {
-    height: 450px;
+  
+  .detail-title {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .size-btn {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .detail-price {
+    font-size: 24px;
   }
 }

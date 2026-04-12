@@ -13,10 +13,10 @@ const Cart = () => {
   const openBankApp = () => {
     const abaLink = "https://pay.ababank.com/oRF8/ksgjomke";
     window.location.href = abaLink;
-    setIsProcessing(true); // បង្ហាញប៊ូតុង Confirm បន្ទាប់ពីលោតទៅ ABA
+    setIsProcessing(true); // បង្ហាញផ្ទាំងបញ្ជាក់បន្ទាប់ពីលោតទៅ ABA
   };
 
-  // ២. មុខងារបញ្ជាក់ថាបង់រួច ទើបផ្ញើទៅ Telegram និង Clear Cart
+  // ២. មុខងារផ្ញើទៅ Telegram និងសម្អាតកន្ត្រក
   const handleFinalConfirm = async () => {
     const botToken = "8214235068:AAHGIMjr6EkaBO2p_NaeCe9ztPos-laICRI"; 
     const chatId = "5467535945"; 
@@ -25,7 +25,7 @@ const Cart = () => {
     cartItems.forEach((item, index) => {
       message += `${index + 1}. ${item.name} x ${item.qty} = $${(item.price * item.qty).toFixed(2)}\n`;
     });
-    message += `\n💰 **សរុប: $${subtotal.toFixed(2)}**`;
+    message += `\n💰 **សរុបដែលត្រូវបង់: $${subtotal.toFixed(2)}**`;
     
     const user = JSON.parse(localStorage.getItem("user"));
     message += `\n👤 **អ្នកទិញ:** ${user ? user.email : "ភ្ញៀវមិនស្គាល់ឈ្មោះ"}`;
@@ -38,12 +38,12 @@ const Cart = () => {
       });
 
       if (response.ok) {
-        alert("អរគុណសម្រាប់ការបញ្ជាទិញ! យើងនឹងពិនិត្យវិក្កយបត្ររបស់អ្នក។");
+        alert("អរគុណសម្រាប់ការបញ្ជាទិញ! យើងនឹងពិនិត្យវិក្កយបត្ររបស់អ្នកក្នុងពេលឆាប់ៗ។");
         clearCart(); 
         setIsProcessing(false);
       }
     } catch (error) {
-      alert("Error sending confirmation!");
+      alert("មានបញ្ហាក្នុងការបញ្ជាក់ការកុម្ម៉ង់!");
     }
   };
 
@@ -82,25 +82,41 @@ const Cart = () => {
           <h3>Order Summary</h3>
           <div className="summary-row"><span>Total</span><span>${subtotal.toFixed(2)}</span></div>
           
-          {!isProcessing ? (
-            // ជំហានទី ១: ចុចដើម្បីទៅ ABA
-            <button onClick={openBankApp} className="checkout-btn" style={{ width: '100%', marginTop: '20px', background: '#005aab' }}>
-              Payment with ABA Bank
-            </button>
-          ) : (
-            // ជំហានទី ២: បន្ទាប់ពីត្រលប់ពី ABA វិញ ឱ្យគេចុចបញ្ជាក់
-            <div style={{ marginTop: '20px', padding: '15px', border: '1px dashed #005aab', borderRadius: '10px', textAlign: 'center' }}>
-              <p style={{ fontSize: '14px', marginBottom: '10px' }}>តើអ្នកបានបង់ប្រាក់រួចរាល់ហើយមែនទេ?</p>
-              <button onClick={handleFinalConfirm} className="checkout-btn" style={{ width: '100%', background: '#28a745' }}>
-                YES, I HAVE PAID
-              </button>
-              <button onClick={() => setIsProcessing(false)} style={{ marginTop: '10px', background: 'none', border: 'none', color: '#888', cursor: 'pointer' }}>
-                Cancel
-              </button>
-            </div>
-          )}
+          <button onClick={openBankApp} className="checkout-btn" style={{ width: '100%', marginTop: '20px', background: '#005aab' }}>
+            Payment with ABA Bank
+          </button>
         </div>
       </div>
+
+      {/* ផ្ទាំង Modal បញ្ជាក់ការបង់ប្រាក់ (លោតឡើងបន្ទាប់ពីចុចប៊ូតុងខាងលើ) */}
+      {isProcessing && (
+        <div className="payment-modal">
+          <div className="modal-content payment-confirm-content">
+            <div className="modal-header-success">
+              <div className="success-icon-wrap">
+                <span className="success-icon">✅</span>
+              </div>
+              <h2>ជំហានចុងក្រោយ!</h2>
+            </div>
+            
+            <div className="modal-body-confirm">
+              <p className="confirm-instruction">
+                តើអ្នកបានផ្ទេរប្រាក់ចំនួន <b className="total-amount">${subtotal.toFixed(2)}</b> ក្នុងកម្មវិធី ABA រួចរាល់ហើយមែនទេ?
+              </p>
+              <p className="note-text">(ចុចប៊ូតុងខាងក្រោមដើម្បីបញ្ចប់ការកុម្ម៉ង់)</p>
+            </div>
+            
+            <div className="modal-actions-vertical">
+              <button onClick={handleFinalConfirm} className="confirm-paid-btn">
+                YES, I HAVE PAID
+              </button>
+              <button onClick={() => setIsProcessing(false)} className="cancel-confirm-btn">
+                មិនទាន់បានបង់ / ត្រឡប់ក្រោយ
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

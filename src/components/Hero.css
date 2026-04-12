@@ -1,68 +1,106 @@
+/* ===== HERO SECTION ===== */
 .hero {
-  height: 80vh; /* កម្ពស់ 80% នៃអេក្រង់ */
-  background-color: #333;
-  /* អ្នកអាចប្តូរ URL រូបភាពខាងលើបាន */
-  background-size: cover;
+  height: 90vh; /* កម្ពស់ជិតពេញអេក្រង់ */
+  width: 1208px;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+              url('https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop'); 
+  background-size: cover;/* ធ្វើអោយរូបភាពកុំអោយរីកពេក*/
   background-position: center;
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* ដាក់អក្សរនៅខាងឆ្វេង */
-  padding: 0 10%;
-  color: white;
-  border-radius: 0.3rem;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 0 20px;
+  border-radius: 0.5rem;
+
 }
 
+/* ===== CONTENT BOX ===== */
 .hero-content {
-  max-width: 600px;
+  max-width: 800px;
+  animation: fadeInUp 1s ease-out; /* បន្ថែមចលនាពេលបើកដំបូង */
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== SUBTITLE ===== */
 .subtitle {
   font-size: 14px;
-  letter-spacing: 3px;
-  margin-bottom: 10px;
-  color: #ff4d4d;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  color: #f1f1f1;
 }
 
+/* ===== MAIN TITLE ===== */
 .title {
-  font-size: 48px;
+  font-size: clamp(32px, 8vw, 64px); /* ទំហំអក្សរលោតតាមអេក្រង់ */
   font-weight: 800;
-  margin-bottom: 20px;
   line-height: 1.2;
+  margin-bottom: 20px;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* ===== DESCRIPTION ===== */
 .description {
-  font-size: 18px;
-  margin-bottom: 30px;
+  font-size: clamp(16px, 2vw, 20px);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
   opacity: 0.9;
 }
 
+/* ===== MODERN BUTTON ===== */
 .hero-btn {
-  display: inline-block; /* ធ្វើឱ្យ Link អាចទទួលយក Padding បានត្រឹមត្រូវ */
+  display: inline-block;
   padding: 15px 40px;
-  background-color: #c4a0a0; /* ពណ៌ខ្មៅ */
-  color: #fff; /* អក្សរស */
-  text-decoration: none; /* លុបបន្ទាត់ពីក្រោមអក្សរ */
-  font-weight: 600;
-  border-radius: 5px;
-  transition: 0.3s ease;
-  margin-top: 20px;
+  background-color: #fff;
+  color: #000;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 50px; /* ប៊ូតុងរាងមូល */
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .hero-btn:hover {
-  background-color: #333; /* ប្តូរពណ៌ពេលដាក់ Mouse លើ */
-  transform: translateY(-3px); /* រលាក់ឡើងលើបន្តិច */
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  background-color: #000;
+  color: #fff;
+  transform: translateY(-5px); /* ឱ្យប៊ូតុងហើរបន្តិច */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Responsive */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .hero {
-    justify-content: center;
-    text-align: center;
-    padding: 0 20px;
+    height: 70vh;
+    width: 428.5px;
   }
+  
   .title {
-    font-size: 32px;
+    margin-bottom: 15px;
+  }
+  
+  .description {
+    margin-bottom: 30px;
+  }
+  
+  .hero-btn {
+    padding: 12px 30px;
+    font-size: 14px;
   }
 }

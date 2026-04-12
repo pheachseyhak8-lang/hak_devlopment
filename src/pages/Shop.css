@@ -1,36 +1,53 @@
-/* ===== SHOP PAGE ===== */
+/* ===== SHOP PAGE LAYOUT ===== */
 .shop-page {
   display: flex;
   max-width: 1200px;
   margin: 40px auto;
   gap: 30px;
   padding: 0 20px;
+  align-items: flex-start;
 }
 
-/* ===== SIDEBAR ===== */
+/* ===== SIDEBAR FILTER ===== */
 .sidebar {
-  width: 190px;
-  padding: 20px;
-  border-right: 1px solid #eee;
+  width: 240px;
+  padding: 25px;
+  background: #fdfdfd;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  position: sticky;
+  top: 100px; /* ឱ្យវាជាប់នៅនឹងកន្លែងពេល Scroll */
+}
+
+.sidebar h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #000;
+  padding-bottom: 5px;
+  display: inline-block;
 }
 
 .filter-group {
-  margin-bottom: 25px;
-}
-
-.filter-group h4 {
-  margin-bottom: 10px;
-  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .filter-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
   cursor: pointer;
+  color: #555;
+  transition: 0.2s;
 }
 
-/* ===== CONTENT ===== */
+.filter-group label:hover {
+  color: #000;
+}
+
+/* ===== MAIN CONTENT ===== */
 .shop-content {
   flex: 1;
 }
@@ -40,101 +57,126 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
-  flex-wrap: wrap;
-  gap: 10px;
+}
+
+.shop-header h2 {
+  font-size: 24px;
+  text-transform: capitalize;
 }
 
 .sort-select {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
 }
 
-/* ===== PRODUCT GRID (SMART RESPONSIVE) ===== */
+/* ===== PRODUCT GRID ===== */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 25px;
 }
 
 /* ===== PRODUCT CARD ===== */
 .product-card {
-  border: 1px solid #eee;
-  padding: 0;
-  border-radius: 10px;
   background: #fff;
-  text-align: center;
-  transition: 0.3s;
-  
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
 
 .product-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
 
-/* IMAGE */
 .product-card img {
-  width: 60%;
-  height: 300px;
+  width: 100%;
+  aspect-ratio: 1/1.2;
   object-fit: cover;
   border-radius: 8px;
-  margin-bottom: 10px;
-  object-position: top;
-
+  transition: transform 0.5s ease;
 }
 
-/* TEXT */
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
 .product-card h4 {
   font-size: 16px;
-  margin: 10px 0 5px;
-  color: #333;
+  margin: 15px 0 5px;
+  color: #222;
+  font-weight: 500;
 }
 
 .product-card p {
-  font-weight: bold;
-  color: #ff4d4d;
+  font-weight: 700;
+  color: #d32f2f; /* ពណ៌តម្លៃឱ្យលេចធ្លោ */
+  font-size: 18px;
+  margin-bottom: 15px;
 }
 
-/* ===== TABLET (<= 992px) ===== */
+/* ===== MODERN ADD TO CART BUTTON ===== */
+.add-to-cart-btn-small {
+  width: 100%;
+  padding: 12px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: auto; /* រុញប៊ូតុងមកខាងក្រោមបំផុតនៃកាត */
+}
+
+.add-to-cart-btn-small:hover {
+  background-color: #333;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.add-to-cart-btn-small::before {
+  content: '🛒';
+  font-size: 16px;
+}
+
+/* ===== RESPONSIVE ===== */
 @media (max-width: 992px) {
   .shop-page {
     flex-direction: column;
   }
-
   .sidebar {
     width: 100%;
-    border-right: none;
-    border-bottom: 1px solid #eee;
+    position: static;
+    margin-bottom: 20px;
   }
-
-  .product-card img {
-    height: 280px;
-  }
-}
-
-/* ===== MOBILE (<= 768px) ===== */
-@media (max-width: 768px) {
-  .shop-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .product-card img {
-    height: 250px;
+  .filter-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
   }
 }
 
-/* ===== SMALL MOBILE (<= 480px) ===== */
-@media (max-width: 480px) {
-  .product-card img {
-    height: 200px;
+@media (max-width: 576px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr); /* បង្ហាញ ២ ក្នុងមួយជួរលើទូរស័ព្ទ */
+    gap: 15px;
   }
-
   .product-card h4 {
     font-size: 14px;
   }
-
   .product-card p {
-    font-size: 14px;
+    font-size: 16px;
   }
 }

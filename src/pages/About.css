@@ -1,66 +1,173 @@
+/* --- CONTAINER --- */
 .about-container {
-  padding: 80px 10%;
-  line-height: 1.6;
-  background-color: rgb(236, 212, 94);
-  border-radius: 0.3rem;
-  font-family: 'Arial', sans-serif;
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+  font-family: 'Inter', sans-serif;
 }
 
+/* --- HEADER SECTION --- */
 .about-header {
   text-align: center;
   margin-bottom: 60px;
 }
 
 .about-header h1 {
-  font-size: 40px;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 15px;
+  color: #111;
+  letter-spacing: -1px;
 }
 
+.about-header p {
+  font-size: 18px;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --- CONTENT SECTION --- */
 .about-content {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 50px;
+  align-items: center;
   margin-bottom: 80px;
 }
 
-.about-image img {
-  width: 100%;
-  max-width: 500px;
+/* --- CONTENT SECTION --- */
+.about-image {
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1); /* ស្រមោលស្រាលជាងមុន */
+  display: flex; /* ឱ្យរូបភាពនៅចំកណ្តាល */
+  justify-content: center;
+  align-items: center;
 }
 
+.about-image img {
+  width: auto; /* ឱ្យទទឹងលោតតាមកម្ពស់ */
+  max-width: 100%; /* ការពារកុំឱ្យធំជាង Container */
+  
+  /* 💡 ដំណោះស្រាយសំខាន់៖ កំណត់កម្ពស់អតិបរមា */
+  height: auto;
+  max-height: 400px; /* អ្នកអាចដូរប្តូរលេខនេះបាន (ឧទាហរណ៍៖ ៣៥០px ឬ ៤5០px) */
+  
+  display: block;
+  object-fit: cover; /* ការពាររូបភាពកុំឱ្យលេចចេញក្រៅ */
+  transition: transform 0.5s ease;
+}
+
+.about-image:hover img {
+  transform: scale(1.03); /* ហហ្ស៊ូមបន្តិចពេល Hover */
+}
+
+
+
+/* --- TEXT SECTION --- */
 .about-text h2 {
-  font-size: 30px;
+  font-size: 32px;
   margin-bottom: 20px;
+  color: #111;
 }
 
+.about-text p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+/* --- MISSION & VISION BOXES --- */
 .mission-vision {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  margin-top: 30px;
 }
 
-.box {
-  background: #f9f9f9;
-  padding: 20px;
-  border-radius: 10px;
+.mission-vision .box {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 15px;
   border-left: 5px solid #000;
+  transition: 0.3s;
 }
 
+.mission-vision .box:hover {
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  transform: translateY(-5px);
+}
+
+.mission-vision .box h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.mission-vision .box p {
+  font-size: 14px;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* --- STATS SECTION --- */
 .stats-section {
-  display: flex;
-  justify-content: space-around;
-  background: #000;
-  color: #fff;
-  padding: 50px;
-  border-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  background: #000; /* ប្រើពណ៌ខ្មៅឱ្យលេចធ្លោ */
+  padding: 60px;
+  border-radius: 25px;
   text-align: center;
+  color: #fff;
+}
+
+.stat-box h2 {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 5px;
+  background: linear-gradient(to right, #fff, #999);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-box p {
+  font-size: 16px;
+  opacity: 0.8;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 992px) {
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-header h1 {
+    font-size: 32px;
+  }
+  
+  .about-image img {
+    height: 350px;
+  }
 }
 
 @media (max-width: 768px) {
-  .about-content { flex-direction: column; }
-  .mission-vision { grid-template-columns: 1fr; }
+  .mission-vision {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-section {
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+  }
+}
+/* --- RESPONSIVE (MOBILE) --- */
+@media (max-width: 992px) {
+  .about-image img {
+    max-height: 300px; /* បន្ថយទំហំរូបភាពលើ Mobile ឱ្យតូចជាងមុន */
+  }
 }

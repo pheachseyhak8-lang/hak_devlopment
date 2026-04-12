@@ -1,62 +1,150 @@
+/* --- CONTAINER --- */
 .contact-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  padding: 50px 10%;
+  gap: 60px;
+  padding: 80px 10%;
   background: #fff;
+  align-items: start;
+}
+
+/* --- CONTACT INFO SECTION --- */
+.contact-info {
+  padding-right: 20px;
 }
 
 .contact-info h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 25px;
+  color: #111;
+  letter-spacing: -1px;
 }
 
 .info-item {
-  margin: 15px 0;
-  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+  font-size: 17px;
+  color: #444;
+}
+
+/* បន្ថែមរូបតំណាងសាមញ្ញ (Icon Placeholder) */
+.info-item::before {
+  content: '📍'; /* អ្នកអាចដូរជា 📧 ឬ 📞 តាមប្រភេទនីមួយៗ */
+  font-size: 20px;
 }
 
 .map-placeholder {
-  margin-top: 30px;
-  border-radius: 10px;
+  margin-top: 40px;
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border: 1px solid #eee;
 }
 
+.map-placeholder iframe {
+  width: 100%;
+  height: 300px;
+  display: block;
+}
+
+/* --- CONTACT FORM SECTION --- */
 .contact-form {
-  background: #f9f9f9;
-  padding: 40px;
-  border-radius: 15px;
+  background: #ffffff;
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.05);
+  border: 1px solid #f0f0f0;
+}
+
+.contact-form h3 {
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .input-group {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
-.input-group input, .input-group textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-family: inherit;
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
 }
 
-.submit-btn {
+.input-group input, 
+.input-group textarea {
   width: 100%;
   padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 15px;
+  background: #fdfdfd;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+  border-color: #000;
+  background: #fff;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0,0,0,0.05);
+}
+
+/* --- SUBMIT BUTTON --- */
+.submit-btn {
+  width: 100%;
+  padding: 18px;
   background: #000;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 12px;
   cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 1px;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .submit-btn:hover {
-  background: #333;
+  background: #222;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 992px) {
+  .contact-container {
+    padding: 60px 5%;
+    gap: 40px;
+  }
 }
 
 @media (max-width: 768px) {
-  .contact-container { grid-template-columns: 1fr; }
+  .contact-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .contact-info {
+    padding-right: 0;
+  }
+
+  .info-item {
+    justify-content: center;
+  }
+
+  .contact-form {
+    padding: 35px 25px;
+  }
 }
