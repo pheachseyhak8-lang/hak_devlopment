@@ -1,10 +1,10 @@
 /* ===== HERO SECTION ===== */
 .hero {
-  height: 90vh; /* កម្ពស់ជិតពេញអេក្រង់ */
-  width: 1208.4px;
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-              url('https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop'); 
-  background-size: cover;/* ធ្វើអោយរូបភាពកុំអោយរីកពេក*/
+  height: 90vh;
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+              url('https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
@@ -12,16 +12,15 @@
   text-align: center;
   color: #fff;
   padding: 0 20px;
-  border-radius: 0.3rem;
-
 }
 
 /* ===== CONTENT BOX ===== */
 .hero-content {
   max-width: 800px;
-  animation: fadeInUp 1s ease-out; /* បន្ថែមចលនាពេលបើកដំបូង */
+  animation: fadeInUp 1s ease-out;
 }
 
+/* ===== ANIMATION ===== */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -45,7 +44,7 @@
 
 /* ===== MAIN TITLE ===== */
 .title {
-  font-size: clamp(32px, 8vw, 64px); /* ទំហំអក្សរលោតតាមអេក្រង់ */
+  font-size: clamp(32px, 8vw, 64px);
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 20px;
@@ -61,18 +60,18 @@
   opacity: 0.9;
 }
 
-/* ===== MODERN BUTTON ===== */
+/* ===== BUTTON ===== */
 .hero-btn {
   display: inline-block;
-  padding: 15px 40px;
+  padding: 14px 36px;
   background-color: #fff;
   color: #000;
   text-decoration: none;
   font-weight: 700;
-  font-size: 16px;
-  border-radius: 50px; /* ប៊ូតុងរាងមូល */
+  font-size: 15px;
+  border-radius: 50px;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -80,27 +79,31 @@
 .hero-btn:hover {
   background-color: #000;
   color: #fff;
-  transform: translateY(-5px); /* ឱ្យប៊ូតុងហើរបន្តិច */
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .hero {
     height: 70vh;
-    width: 428.5px;
   }
-  
+
+  .subtitle {
+    font-size: 12px;
+  }
+
   .title {
-    margin-bottom: 15px;
+    font-size: 28px;
   }
-  
+
   .description {
-    margin-bottom: 30px;
+    font-size: 14px;
+    margin-bottom: 25px;
   }
-  
+
   .hero-btn {
-    padding: 12px 30px;
+    padding: 12px 28px;
     font-size: 14px;
   }
 }
