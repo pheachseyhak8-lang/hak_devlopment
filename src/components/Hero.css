@@ -1,7 +1,7 @@
 /* ===== HERO SECTION ===== */
 .hero {
   height: 90vh; /* កម្ពស់ជិតពេញអេក្រង់ */
-  width: 1208px;
+  width: 1208.4px;
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
               url('https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop'); 
   background-size: cover;/* ធ្វើអោយរូបភាពកុំអោយរីកពេក*/
@@ -12,7 +12,7 @@
   text-align: center;
   color: #fff;
   padding: 0 20px;
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
 
 }
 

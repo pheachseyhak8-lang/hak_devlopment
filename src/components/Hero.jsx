@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom"; // ១. កុំភ្លេច Import មួយនេះ
+import { Link } from "react-router-dom"; 
 import "./Hero.css";
 
 const Hero = () => {
