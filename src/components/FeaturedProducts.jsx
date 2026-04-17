@@ -6,7 +6,7 @@ import "./FeaturedProducts.css";
 
 const FeaturedProducts = () => {
   const { addToCart } = useCart();
-  const featured = allProducts.slice(0, 12); // បង្ហាញតែ ៤ មុខដំបូង
+  const featured = allProducts.slice(0, 13); // បង្ហាញតែ ៤ មុខដំបូង
 
   return (
     <section className="featured-section">
