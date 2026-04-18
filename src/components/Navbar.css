@@ -22,8 +22,8 @@
 
 /* Search */
 .search input {
-  padding: 6px 12px;
-  border-radius: 5px;
+  padding: 8px 15px;
+  border-radius: 3rem;
   border: none;
 }
 
