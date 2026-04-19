@@ -10,6 +10,8 @@ import koo from "../assets/koo.webp";
 import one from "../assets/one.webp"; 
 import hak from "../assets/hak.jpg";
 import ai from "../assets/ai.jpg"
+import yy from "../assets/yy.webp";
+import two from "../assets/two.avif";
 
 export const allProducts = [
   { id: 1, name: " Man T-Shirt", price: 400, category: "Men", image: hak, description: "High-quality cotton t-shirt for men, comfortable and durable." },
@@ -26,4 +28,6 @@ export const allProducts = [
   { id: 12, name: "Modern Graphic black", price: 560, category: "Women", image: koo, description: "Creative graphic design tee for a unique look." },
   { id: 13, name: "black Graphic Tee", price: 600, category: "Women", image: one, description: "black design tee for a unique look." },
   { id: 14, name: "Boy smart", price: 300, category: "Men", image: ai, description: "Boy Gen Z." },
+  { id: 15, name: "Girl Beutiful", price: 300, category: "women", image: yy, description: "Girl T shirt Brand." },
+  { id: 16, name: "Girl smart", price: 300, category: "women", image: two, description: "Girl T shirt." },
 ];
