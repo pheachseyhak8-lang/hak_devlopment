@@ -15,12 +15,19 @@ const FeaturedProducts = () => {
         {featured.map((product) => (
           <div key={product.id} className="product-card">
             <div className="product-image">
-              <Link to={`/product/${product.id}`}><img src={product.image} alt={product.name} /></Link>
-              <button className="add-btn" onClick={() => addToCart(product)}>Add to Cart</button>
+              <Link to={`/product/${product.id}`}>
+                <img src={product.image} alt={product.name} />
+              </Link>
+              <button className="add-btn" onClick={() => addToCart(product)}>
+                Add to Cart
+              </button>
             </div>
             <div className="product-info">
               <p className="category">{product.category}</p>
-              <Link to={`/product/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <Link
+                to={`/product/${product.id}`}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
                 <h4>{product.name}</h4>
               </Link>
               <p className="price">${product.price.toFixed(2)}</p>
